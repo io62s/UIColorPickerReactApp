@@ -1,8 +1,27 @@
 .Palette {
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 .Palette-colors {
-  height: 90%;
+  height: 90vh;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+}
+
+.Palette-footer {
+  background: white;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-weight: bold;
+  height: 4vh;
+}
+
+.emoji {
+  font-size: 1.3rem;
+  margin: 0 1rem;
+  margin-bottom: 5px;
+  align-self: center;
 }

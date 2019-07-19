@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
+import { Link } from "react-router-dom";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import "./Navbar.css";
@@ -41,11 +42,11 @@ export class Navbar extends Component {
 
     return (
       <header className="Navbar">
-        <>
+        <Fragment>
           <div className="logo">
-            <a href="#">
-              <img src={logo} alt="logo" /> UI Color Picker
-            </a>
+            <Link to="/">
+              <img src={logo} alt="logo" /> {/*  UI Color Picker */}
+            </Link>
           </div>
           <div className="slider-container">
             <span>
@@ -61,12 +62,12 @@ export class Navbar extends Component {
               />
             </div>
           </div>
-        </>
+        </Fragment>
         <div className="select-container">
           <Select value={format} onChange={this.handleFormatChange}>
-            <MenuItem value="hex">HEX - #ffffff</MenuItem>
-            <MenuItem value="rgb">RGB - rgb(255,255,255)</MenuItem>
-            <MenuItem value="rgba">RGBA - rgba(255,255,255, 1)</MenuItem>
+            <MenuItem value="hex">HEX</MenuItem>
+            <MenuItem value="rgb">RGB</MenuItem>
+            <MenuItem value="rgba">RGBA</MenuItem>
           </Select>
         </div>
         <Snackbar

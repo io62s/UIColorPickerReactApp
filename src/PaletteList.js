@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import MiniPalette from "./MiniPalette";
 import { withStyles } from "@material-ui/styles";
 import logo from "./logo.png";
 
 class PaletteList extends Component {
+  goToPalette = id => {
+    this.props.history.push(`/palette/${id}`);
+  };
   render() {
     const { classes } = this.props;
     const { palettes } = this.props;
@@ -19,13 +21,10 @@ class PaletteList extends Component {
           <div className={classes.paletteGrid}>
             {palettes.map(palette => {
               return (
-                <Link
-                  key={palette.paletteName}
-                  className={classes.link}
-                  to={`/palette/${palette.id}`}
-                >
-                  <MiniPalette {...palette} />
-                </Link>
+                <MiniPalette
+                  {...palette}
+                  handleClick={() => this.goToPalette(palette.id)}
+                />
               );
             })}
           </div>
@@ -50,7 +49,7 @@ const styles = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    color: "#0ac6d3",
+    color: "#a4a4a4",
     fontSize: "1.1rem"
   },
   paletteGrid: {
@@ -59,9 +58,6 @@ const styles = {
     gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
     gridGap: "20px",
     marginTop: "3rem"
-  },
-  link: {
-    textDecoration: "none"
   },
   heading: {
     display: "flex",

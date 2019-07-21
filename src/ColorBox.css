@@ -45,9 +45,14 @@
   padding: 10px;
   left: 0;
   bottom: 0;
-  color: white;
+  color: black;
   font-size: 0.8rem;
 }
+
+.light-text {
+  color: white;
+}
+
 .see-more {
   position: absolute;
   bottom: 0;
@@ -57,7 +62,9 @@
   color: white;
   background: rgba(255, 255, 255, 0.3);
 }
-
+.dark-text {
+  color: rgba(0, 0, 0, 0.8);
+}
 .copy-overlay {
   opacity: 0;
   z-index: 0;

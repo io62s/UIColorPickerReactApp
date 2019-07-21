@@ -36,8 +36,18 @@ export class Navbar extends Component {
     });
   };
 
+  // goBack = () => {
+  //   this.props.location.history.goBack();
+  // };
+
   render() {
-    const { level, changeLevel } = this.props;
+    const {
+      level,
+      changeLevel,
+      showingAllColors,
+      showBackBtn,
+      id
+    } = this.props;
     const { format, open } = this.state;
 
     return (
@@ -45,23 +55,30 @@ export class Navbar extends Component {
         <Fragment>
           <div className="logo">
             <Link to="/">
-              <img src={logo} alt="logo" /> {/*  UI Color Picker */}
+              <img src={logo} alt="logo" /> UI Color Picker
             </Link>
           </div>
-          <div className="slider-container">
-            <span>
-              Level: <strong>{level}</strong>
-            </span>
-            <div className="slider">
-              <Slider
-                defaultValue={level}
-                min={100}
-                max={900}
-                step={100}
-                onAfterChange={changeLevel}
-              />
+          {showBackBtn && (
+            <Link className="back-btn" to={`/palette/${id}`}>
+              Go Back
+            </Link>
+          )}
+          {showingAllColors && (
+            <div className="slider-container">
+              <span>
+                Level: <strong>{level}</strong>
+              </span>
+              <div className="slider">
+                <Slider
+                  defaultValue={level}
+                  min={100}
+                  max={900}
+                  step={100}
+                  onAfterChange={changeLevel}
+                />
+              </div>
             </div>
-          </div>
+          )}
         </Fragment>
         <div className="select-container">
           <Select value={format} onChange={this.handleFormatChange}>

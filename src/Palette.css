@@ -10,6 +10,20 @@
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
 }
 
+.Palette-shades {
+  height: 90vh;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+}
+
+@media screen and (max-width: 1000px) {
+  .Palette-shades {
+    height: 90vh;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 100%);
+  }
+}
+
 .Palette-footer {
   background: white;
   display: flex;

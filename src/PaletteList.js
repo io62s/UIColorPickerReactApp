@@ -22,6 +22,7 @@ class PaletteList extends Component {
             {palettes.map(palette => {
               return (
                 <MiniPalette
+                  key={palette.paletteName}
                   {...palette}
                   handleClick={() => this.goToPalette(palette.id)}
                 />

@@ -4,10 +4,6 @@
   margin: 0;
 }
 .ColorBox {
-  /* width: 20%;
-  height: 25%;
-  margin: 0 auto;
-  display: inline-block;*/
   position: relative;
   cursor: pointer;
   text-transform: uppercase;
@@ -28,7 +24,6 @@
   cursor: pointer;
   outline: none;
   font-size: 1rem;
-  color: white;
   opacity: 0;
   text-transform: uppercase;
   background: rgba(255, 255, 255, 0.2);
@@ -49,22 +44,15 @@
   font-size: 0.8rem;
 }
 
-.light-text {
-  color: white;
-}
-
 .see-more {
   position: absolute;
   bottom: 0;
   right: 0;
   padding: 5px 10px;
   font-size: 0.9rem;
-  color: white;
   background: rgba(255, 255, 255, 0.3);
 }
-.dark-text {
-  color: rgba(0, 0, 0, 0.8);
-}
+
 .copy-overlay {
   opacity: 0;
   z-index: 0;
@@ -93,7 +81,6 @@
   pointer-events: none;
   transform: scale(0.1);
   opacity: 0;
-  color: white;
 }
 .copy-msg.show {
   opacity: 1;

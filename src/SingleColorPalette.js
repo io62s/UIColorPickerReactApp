@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import ColorBox from "./ColorBox";
 import Navbar from "./Navbar";
 import PaletteFooter from "./PaletteFooter";
+import { withStyles } from "@material-ui/styles";
+
 class SingleColorPalette extends Component {
   state = {
     shades: [],
@@ -33,6 +35,7 @@ class SingleColorPalette extends Component {
 
   render() {
     const { shades, format } = this.state;
+    const { classes } = this.props;
     const { paletteName, emoji, id } = this.props.palette;
     const colorBoxes = shades.map(color => (
       <ColorBox
@@ -43,7 +46,7 @@ class SingleColorPalette extends Component {
       />
     ));
     return (
-      <div className="Palette">
+      <div className={classes.Palette}>
         <Navbar
           handleChange={this.changeFormat}
           showingAllColors={false}
@@ -51,11 +54,29 @@ class SingleColorPalette extends Component {
           id={id}
         />
 
-        <div className="Palette-shades">{colorBoxes}</div>
+        <div className={classes.PaletteShades}>{colorBoxes}</div>
         <PaletteFooter paletteName={paletteName} emoji={emoji} />
       </div>
     );
   }
 }
 
-export default SingleColorPalette;
+const styles = {
+  Palette: {
+    height: "100vh",
+    display: "flex",
+    flexDirection: "column",
+    overflow: "hidden"
+  },
+  PaletteShades: {
+    height: "90vh",
+    display: "grid",
+    gridTemplateColumns: "repeat(9, 1fr)",
+
+    "@media (max-width: 1000px)": {
+      gridTemplateColumns: "repeat(auto-fill, 100%)"
+    }
+  }
+};
+
+export default withStyles(styles)(SingleColorPalette);

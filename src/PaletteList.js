@@ -15,7 +15,8 @@ class PaletteList extends Component {
         <div className={classes.container}>
           <nav className={classes.nav}>
             <h1 className={classes.heading}>
-              <img src={logo} alt="logo" className={classes.logo} /> UI Colors
+              <img src={logo} alt="logo" className={classes.logo} /> UI Color
+              Palettes
             </h1>
           </nav>
           <div className={classes.paletteGrid}>
@@ -51,7 +52,7 @@ const styles = {
     justifyContent: "space-between",
     alignItems: "center",
     color: "#a4a4a4",
-    fontSize: "1.1rem"
+    fontSize: "1rem"
   },
   paletteGrid: {
     boxSizing: "border-box",

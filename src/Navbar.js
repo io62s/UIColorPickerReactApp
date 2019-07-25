@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
-import "./Navbar.css";
+import "./styles/Navbar.css";
 
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -35,10 +35,6 @@ export class Navbar extends Component {
       open: false
     });
   };
-
-  // goBack = () => {
-  //   this.props.location.history.goBack();
-  // };
 
   render() {
     const {

@@ -3,6 +3,7 @@ import ColorBox from "./ColorBox";
 import Navbar from "./Navbar";
 import PaletteFooter from "./PaletteFooter";
 import { withStyles } from "@material-ui/styles";
+import styles from "./styles/SingleColorPalette";
 
 class SingleColorPalette extends Component {
   state = {
@@ -60,23 +61,5 @@ class SingleColorPalette extends Component {
     );
   }
 }
-
-const styles = {
-  Palette: {
-    height: "100vh",
-    display: "flex",
-    flexDirection: "column",
-    overflow: "hidden"
-  },
-  PaletteShades: {
-    height: "90vh",
-    display: "grid",
-    gridTemplateColumns: "repeat(9, 1fr)",
-
-    "@media (max-width: 1000px)": {
-      gridTemplateColumns: "repeat(auto-fill, 100%)"
-    }
-  }
-};
 
 export default withStyles(styles)(SingleColorPalette);

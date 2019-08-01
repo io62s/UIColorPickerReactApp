@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import MiniPalette from "./MiniPalette";
 import { withStyles } from "@material-ui/styles";
-import styles from "./styles/PaletteList";
-import logo from "./logo.png";
+import styles from "../styles/PaletteList";
+import logo from "../logo2.png";
 
 class PaletteList extends Component {
   goToPalette = id => {
@@ -19,6 +20,7 @@ class PaletteList extends Component {
               <img src={logo} alt="logo" className={classes.logo} /> UI Color
               Palettes
             </h1>
+            <Link to="/palette/new">Create Palette</Link>
           </nav>
           <div className={classes.paletteGrid}>
             {palettes.map(palette => {

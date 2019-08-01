@@ -1,6 +1,6 @@
 import React from "react";
 import { withStyles } from "@material-ui/styles";
-import styles from "./styles/PaletteFooter.js";
+import styles from "../styles/PaletteFooter.js";
 
 const PaletteFooter = props => {
   const { classes, paletteName, emoji } = props;

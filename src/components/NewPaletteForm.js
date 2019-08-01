@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import DraggableColorBox from "./DraggableColorBox";
 import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -10,8 +11,10 @@ import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import { ChromePicker } from "react-color";
 import Button from "@material-ui/core/Button";
+import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+import { ChromePicker } from "react-color";
+import { timingSafeEqual } from "crypto";
 
 const drawerWidth = 350;
 
@@ -56,12 +59,12 @@ const styles = theme => ({
   },
   content: {
     flexGrow: 1,
-    padding: "15px",
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
     }),
-    marginLeft: -drawerWidth
+    marginLeft: -drawerWidth,
+    overflow: "hidden"
   },
   contentShift: {
     transition: theme.transitions.create("margin", {
@@ -79,18 +82,19 @@ const styles = theme => ({
     height: "100%",
     display: "flex",
     flexDirection: "column",
-    alignContent: "center",
+    alignItems: "center",
     justifyContent: "flex-start"
   },
   elContainer: {
     width: "100%",
     display: "flex",
     alignItems: "center",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
     padding: "12px"
   },
   picker: {
-    flex: "1"
+    flex: "1",
+    marginBottom: "1.5rem"
   },
   buttonMain: {
     margin: "2rem auto",
@@ -103,15 +107,40 @@ const styles = theme => ({
   },
   input: {
     display: "none"
+  },
+  colors: {
+    width: "100%",
+    height: "calc(100vh - 64px)"
+    // display: "grid",
+    // gridTemplateColumns: "repeat(auto-fill, minmax(350px, 1fr))"
+  },
+  form: {
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
   }
 });
 
 class NewPaletteForm extends Component {
   state = {
-    open: false,
-    currentColor: "teal",
-    colors: ["purple", "#77E01E"]
+    open: true,
+    currentColor: "#0ac6d3",
+    newName: "",
+    colors: []
   };
+
+  componentDidMount() {
+    ValidatorForm.addValidationRule("isColorNameUnique", value =>
+      this.state.colors.every(
+        ({ name }) => name.toLowerCase() !== value.toLowerCase()
+      )
+    );
+
+    ValidatorForm.addValidationRule("isColorUnique", value =>
+      this.state.colors.every(({ color }) => color !== this.state.currentColor)
+    );
+  }
 
   handleToggleDrawer = () => {
     this.setState(prevState => ({
@@ -124,14 +153,25 @@ class NewPaletteForm extends Component {
   };
 
   addNewColor = () => {
+    const newColor = {
+      color: this.state.currentColor,
+      name: this.state.newName
+    };
     this.setState({
-      colors: [...this.state.colors, this.state.currentColor]
+      colors: [...this.state.colors, newColor],
+      newName: ""
+    });
+  };
+
+  handleChange = e => {
+    this.setState({
+      newName: e.target.value
     });
   };
 
   render() {
     const { classes } = this.props;
-    const { open, currentColor } = this.state;
+    const { open, currentColor, colors, newName } = this.state;
 
     return (
       <div className={classes.root}>
@@ -198,15 +238,28 @@ class NewPaletteForm extends Component {
                 onChangeComplete={newColor => this.updateCurrentColor(newColor)}
               />
             </div>
-            <Button
-              variant="contained"
-              color="primary"
-              style={{ backgroundColor: currentColor }}
-              onClick={this.addNewColor}
-              className={classes.buttonMain}
-            >
-              Add Color
-            </Button>
+            <ValidatorForm className={classes.form} onSubmit={this.addNewColor}>
+              <TextValidator
+                value={newName}
+                onChange={this.handleChange}
+                validators={["required", "isColorNameUnique", "isColorUnique"]}
+                errorMessages={[
+                  "Enter color name",
+                  "Color name must be unique",
+                  "Color already used"
+                ]}
+              />
+              <Button
+                disabled={colors.length === 20}
+                variant="contained"
+                color="primary"
+                style={{ backgroundColor: currentColor }}
+                type="submit"
+                className={classes.buttonMain}
+              >
+                {colors.length === 20 ? "Palette Full" : "Add Color"}
+              </Button>
+            </ValidatorForm>
           </div>
         </Drawer>
         <main
@@ -215,11 +268,11 @@ class NewPaletteForm extends Component {
           })}
         >
           <div className={classes.drawerHeader} />
-          <ul>
-            {this.state.colors.map(color => {
-              return <li style={{ backgroundColor: color }}>{color}</li>;
-            })}
-          </ul>
+          <div className={classes.colors}>
+            {colors.map(({ color, name }) => (
+              <DraggableColorBox color={color} name={name} />
+            ))}
+          </div>
         </main>
       </div>
     );

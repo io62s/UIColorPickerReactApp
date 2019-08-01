@@ -3,11 +3,11 @@ import { withStyles } from "@material-ui/core/styles";
 
 const styles = {
   root: {
-    width: "20%",
-    height: "25%",
-    margin: "0 auto",
-    display: "inline-block",
-    position: "relative",
+    // width: "20%",
+    // height: "25%",
+    // margin: "0 auto",
+    // display: "inline-block",
+    //position: "relative",
     cursor: "pointer"
   }
 };

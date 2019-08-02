@@ -4,7 +4,7 @@ import MiniPalette from "./MiniPalette";
 import { withStyles } from "@material-ui/styles";
 import styles from "../styles/PaletteList";
 import logo from "../logo2.png";
-
+import Button from "@material-ui/core/Button";
 class PaletteList extends Component {
   goToPalette = id => {
     this.props.history.push(`/palette/${id}`);
@@ -20,7 +20,11 @@ class PaletteList extends Component {
               <img src={logo} alt="logo" className={classes.logo} /> UI Color
               Palettes
             </h1>
-            <Link to="/palette/new">Create Palette</Link>
+            <Link to="/palette/new">
+              <Button variant="outlined" color="primary">
+                Create Palette
+              </Button>
+            </Link>
           </nav>
           <div className={classes.paletteGrid}>
             {palettes.map(palette => {

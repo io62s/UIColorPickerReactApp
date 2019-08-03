@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import MiniPalette from "./MiniPalette";
 import { withStyles } from "@material-ui/styles";
 import styles from "../styles/PaletteList";
-import logo from "../logo2.png";
+import logo from "../logo3.png";
 import Button from "@material-ui/core/Button";
+
 class PaletteList extends Component {
   goToPalette = id => {
     this.props.history.push(`/palette/${id}`);
@@ -18,7 +19,7 @@ class PaletteList extends Component {
           <nav className={classes.nav}>
             <h1 className={classes.heading}>
               <img src={logo} alt="logo" className={classes.logo} /> UI Color
-              Palettes
+              Picker
             </h1>
             <Link to="/palette/new">
               <Button variant="outlined" color="primary">

@@ -10,7 +10,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import CloseIcon from "@material-ui/icons/Close";
 import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
-import logo from "../logo2.png";
+import logo from "../logo3.png";
 
 export class Navbar extends Component {
   state = {

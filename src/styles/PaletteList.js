@@ -24,21 +24,7 @@ export default {
 
     "& a": {
       textDecoration: "none",
-      //fontWeight: "600",
-      //color: "#fff",
-      //padding: "10px 10px",
       marginTop: "1rem"
-      // background: "#0ac6d3",
-      // border: "1px solid #f0f0f0",
-      // borderRadius: "3px",
-      // textAlign: "center",
-      // transition: "all 0.2s ease-out",
-
-      // "&:hover": {
-      //   color: "#0ac6d3",
-      //   background: "#fff",
-      //   boxShadow: "0 2px 8px rgba(0,0,0,.1)"
-      // }
     },
 
     "@media (max-width: 800px)": {
@@ -60,7 +46,7 @@ export default {
     alignItems: "center"
   },
   logo: {
-    width: "40px",
+    height: "40px",
     marginRight: "0.5rem"
   }
 };

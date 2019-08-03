@@ -11,30 +11,10 @@ import IconButton from "@material-ui/core/IconButton";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import Button from "@material-ui/core/Button";
 import arrayMove from "array-move";
-
 const drawerWidth = 350;
-
 const styles = theme => ({
   root: {
     display: "flex"
-  },
-  appBar: {
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    })
-  },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen
-    })
-  },
-  menuButton: {
-    marginLeft: 12,
-    marginRight: 20
   },
   hide: {
     display: "none"
@@ -80,42 +60,17 @@ const styles = theme => ({
     alignItems: "center",
     justifyContent: "flex-start"
   },
-  pickerContainer: {
-    width: "100%",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    paddingTop: "1.5rem",
-    justifyContent: "flex-start"
-  },
-  elContainer: {
-    width: "100%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    padding: "12px"
-  },
-  picker: {
-    width: "100%",
-    marginBottom: "1.5rem"
-  },
-  buttonMain: {
-    margin: "2rem auto",
+  btnContainer: {
     width: "95%",
-    padding: "10px 0",
-    fontSize: "1.4rem"
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between"
   },
   button: {
     width: "48%"
   },
   input: {
     display: "none"
-  },
-  form: {
-    width: "100%",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center"
   }
 });
 
@@ -144,10 +99,11 @@ class NewPaletteForm extends Component {
     });
   };
 
-  handleSubmit = newPaletteName => {
+  handleSubmit = (newPaletteName, emoji) => {
     const newPalette = {
       paletteName: newPaletteName,
       id: newPaletteName.toLowerCase().replace(/ /g, "-"),
+      emoji: emoji.native,
       colors: this.state.colors
     };
     this.props.savePalette(newPalette);
@@ -204,7 +160,6 @@ class NewPaletteForm extends Component {
       <div className={classes.root}>
         <PaletteFormNav
           open={open}
-          classes={classes}
           palettes={palettes}
           handleSubmit={this.handleSubmit}
           handleToggleDrawer={this.handleToggleDrawer}
@@ -228,7 +183,7 @@ class NewPaletteForm extends Component {
             <Typography className={classes.heading} variant="h4">
               Create Palette
             </Typography>
-            <div className={classes.elContainer}>
+            <div className={classes.btnContainer}>
               <Button
                 disabled={paletteFull}
                 variant="outlined"
@@ -248,7 +203,6 @@ class NewPaletteForm extends Component {
               </Button>
             </div>
             <ColorPickerForm
-              classes={classes}
               paletteFull={paletteFull}
               addNewColor={this.addNewColor}
               colors={colors}

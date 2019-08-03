@@ -3,9 +3,6 @@ export default theme => ({
   root: {
     display: "flex"
   },
-  hide: {
-    display: "none"
-  },
   drawer: {
     width: drawerWidth,
     flexShrink: 0

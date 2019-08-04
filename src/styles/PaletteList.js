@@ -1,6 +1,6 @@
 export default {
   root: {
-    backgroundColor: "#f7f7f7",
+    backgroundColor: "#f5f5f5",
     padding: "1rem",
     minHeight: "100vh"
   },
@@ -8,8 +8,8 @@ export default {
     width: "50%",
     margin: "0 auto",
 
-    "@media (max-width: 550px)": {
-      width: "80%"
+    "@media (max-width: 600px)": {
+      width: "70%"
     }
   },
   nav: {
@@ -38,7 +38,7 @@ export default {
     display: "grid",
     gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
     gridGap: "20px",
-    marginTop: "3rem"
+    margin: "3rem 0"
   },
   heading: {
     display: "flex",

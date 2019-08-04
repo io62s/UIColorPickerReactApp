@@ -12,10 +12,17 @@ export default theme => ({
       duration: theme.transitions.duration.leavingScreen
     }),
     flexDirection: "row",
-    flexWrap: "wrap",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingRight: "2rem"
+    paddingRight: "2rem",
+    "@media (max-width: 800px)": {
+      margin: 0,
+      paddingRight: "5px",
+      "& MuiToolbar-gutters": {
+        paddingRight: "0",
+        paddngLeft: "0"
+      }
+    }
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -27,12 +34,18 @@ export default theme => ({
   },
   menuButton: {
     marginLeft: 12,
-    marginRight: 20
+    marginRight: 20,
+    "@media (max-width: 800px)": {
+      marginRight: 0
+    }
   },
   navBtns: {
     "& a": {
       textDecoration: "none",
-      marginLeft: "1rem"
+      marginLeft: "1rem",
+      "@media (max-width: 800px)": {
+        marginLeft: "5px"
+      }
     }
   }
 });

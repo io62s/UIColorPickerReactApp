@@ -9,10 +9,14 @@ export default {
     position: "relative",
     overflow: "hidden",
     boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+    cursor: "pointer",
     transition: "all 0.2s ease-out",
     "&:hover": {
-      cursor: "pointer",
       boxShadow: "0 2px 5px rgba(0,0,0,0.2)"
+    },
+    "&:hover svg": {
+      top: "0px",
+      right: "0px"
     }
   },
   colors: {
@@ -40,5 +44,16 @@ export default {
   minicolor: {
     width: "100%",
     height: "50px"
+  },
+  deleteIcon: {
+    color: "white",
+    backgroundColor: "#eb3d30",
+    width: "40px",
+    height: "40px",
+    position: "absolute",
+    top: "-40px",
+    right: "-40px",
+    padding: "5px",
+    zIndex: "10"
   }
 };

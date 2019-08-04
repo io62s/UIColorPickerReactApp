@@ -1,5 +1,6 @@
 export default {
   colors: {
+    position: "relative",
     width: "100%",
     height: "calc(100vh - 64px)",
     display: "grid",
@@ -11,7 +12,8 @@ export default {
       gridTemplateRows: "auto"
     },
 
-    "@media (max-width: 800px)": {
+    "@media (max-width: 600px)": {
+      height: "calc(100vh - 56px)",
       gridTemplateColumns: "1fr",
       gridTemplateRows: "auto"
     }

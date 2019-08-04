@@ -1,4 +1,15 @@
 export default {
+  "@global": {
+    ".fade-exit": {
+      opacity: "1",
+      transform: "scale(1)"
+    },
+    ".fade-exit-active": {
+      opacity: "0",
+      transform: "scale(0)",
+      transition: "all 400ms ease-out"
+    }
+  },
   root: {
     backgroundColor: "#f5f5f5",
     padding: "1rem",

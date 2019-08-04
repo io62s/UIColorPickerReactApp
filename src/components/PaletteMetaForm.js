@@ -66,6 +66,7 @@ class PaletteMetaForm extends Component {
               </DialogContentText>
 
               <TextValidator
+                autoFocus
                 name="newPaletteName"
                 label="Palette Name"
                 value={newPaletteName}

@@ -51,7 +51,7 @@ export class Navbar extends Component {
         <Fragment>
           <div className="logo">
             <Link to="/">
-              <img src={logo} alt="logo" /> UI Color Picker
+              <img src={logo} alt="logo" /> UI Palettes
             </Link>
           </div>
           {showBackBtn && (

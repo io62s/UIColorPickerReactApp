@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PaletteFormNav from "./PaletteFormNav";
 import DraggableColorList from "./DraggableColorList";
 import ColorPickerForm from "./ColorPickerForm";
+import seedPallets from "../seedColors";
 import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -16,7 +17,7 @@ import styles from "../styles/NewPaletteForm";
 class NewPaletteForm extends Component {
   state = {
     open: true,
-    colors: this.props.palettes[0].colors
+    colors: seedPallets[0].colors
   };
 
   handleToggleDrawer = () => {
@@ -63,18 +64,16 @@ class NewPaletteForm extends Component {
   };
 
   addRandomColor = () => {
-    const rndmPlt = Math.floor(Math.random() * this.props.palettes.length);
+    const rndmPlt = Math.floor(Math.random() * seedPallets.length);
     let rndmClr = Math.floor(
-      Math.random() * this.props.palettes[rndmPlt].colors.length
+      Math.random() * seedPallets[rndmPlt].colors.length
     );
-    let randomColor = this.props.palettes[rndmPlt].colors[rndmClr];
+    let randomColor = seedPallets[rndmPlt].colors[rndmClr];
     let isDuplicateColor = true;
 
     while (isDuplicateColor) {
-      rndmClr = Math.floor(
-        Math.random() * this.props.palettes[rndmPlt].colors.length
-      );
-      randomColor = this.props.palettes[rndmPlt].colors[rndmClr];
+      rndmClr = Math.floor(Math.random() * seedPallets[rndmPlt].colors.length);
+      randomColor = seedPallets[rndmPlt].colors[rndmClr];
       isDuplicateColor = this.state.colors.some(
         color => color.name === randomColor.name
       );
@@ -159,7 +158,7 @@ class NewPaletteForm extends Component {
             removeColor={this.removeColor}
             axis="xy"
             onSortEnd={this.onSortEnd}
-            distance={20}
+            distance={10}
           />
         </main>
       </div>

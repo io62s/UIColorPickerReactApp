@@ -1,3 +1,4 @@
+import chroma from "chroma-js";
 export default {
   root: {
     position: "relative",
@@ -14,10 +15,13 @@ export default {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
+    color: props =>
+      chroma(props.color).luminance() >= 0.08
+        ? "rgba(0,0,0, 0.7)"
+        : "rgba(255,255,255,0.9)",
     padding: "10px",
     left: "0",
     bottom: "0",
-    color: "rgba(0,0,0, 0.6)",
     fonSize: "0.8rem",
     textTransform: "uppercase"
   },

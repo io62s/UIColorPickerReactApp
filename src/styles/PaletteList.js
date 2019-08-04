@@ -11,7 +11,8 @@ export default {
     }
   },
   root: {
-    backgroundColor: "#f5f5f5",
+    backgroundColor: "#background-color: #614385 ",
+    backgroundImage: "linear-gradient(160deg, #614385  0%, #516395 100%)",
     padding: "1rem",
     minHeight: "100vh"
   },
@@ -30,7 +31,7 @@ export default {
     flexWrap: "wrap",
     justifyContent: "space-between",
     alignItems: "center",
-    color: "#a4a4a4",
+    color: "#fff",
     fontSize: "1rem",
 
     "& a": {

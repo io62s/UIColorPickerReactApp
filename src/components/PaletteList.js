@@ -54,14 +54,13 @@ class PaletteList extends Component {
         <div className={classes.container}>
           <nav className={classes.nav}>
             <h1 className={classes.heading}>
-              <img src={logo} alt="logo" className={classes.logo} /> UI Color
-              Picker
+              <img src={logo} alt="logo" className={classes.logo} /> UI Palettes
             </h1>
             <Link to="/palette/new">
               <Button
-                variant="outlined"
-                color="primary"
-                style={{ fontWeight: "600", backgroundColor: "#fff" }}
+                variant="contained"
+                color="secondary"
+                style={{ fontWeight: "600" }}
               >
                 Create Palette
               </Button>
@@ -76,7 +75,7 @@ class PaletteList extends Component {
                     {...palette}
                     id={palette.id}
                     openDialog={this.openDialog}
-                    handleClick={() => this.goToPalette(palette.id)}
+                    goToPalette={this.goToPalette}
                   />
                 </CSSTransition>
               );

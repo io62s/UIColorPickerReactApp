@@ -11,8 +11,9 @@ export default {
     }
   },
   root: {
-    backgroundColor: "#background-color: #614385 ",
-    backgroundImage: "linear-gradient(160deg, #614385  0%, #516395 100%)",
+    backgroundColor: "#f7f7f7",
+//     backgroundColor: "#614385",
+//     backgroundImage: "linear-gradient(160deg, #614385  0%, #516395 100%)",
     padding: "1rem",
     minHeight: "100vh"
   },
